@@ -1,0 +1,6 @@
+requests
+beautifulsoup4
+nltk
+numpy
+opencv-python
+matplotlib
