@@ -1,5 +1,4 @@
 import pickle
-from nltk.classify import NaiveBayesClassifier, accuracy
 
 classifier = None
 
@@ -9,6 +8,7 @@ def create_model():
     """
     print("Creating model data!")
     import nltk
+    from nltk.classify import NaiveBayesClassifier, accuracy
     from main import punctuation
     
     import time
@@ -82,9 +82,10 @@ def create_model():
         pickle.dump(classifier, file)
 
     print("Model data created!")
-    
     end_time = time.time()
     print("Time:", end_time - start_time, 's')
+    
+    return classifier
 
 
 if __name__ == '__main__':
@@ -95,4 +96,4 @@ else:
             classifier = pickle.load(file)
     except:
         print("Failed to load model data!")
-        create_model()
+        classifier = create_model()

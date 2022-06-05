@@ -1,5 +1,3 @@
-*.json
-*.html
 __pycache__
-venv/
-venv/*/**
+venv
+result
