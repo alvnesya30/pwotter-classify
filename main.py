@@ -88,9 +88,8 @@ def main():
         filename = img.split('/')
         filename = filename[len(filename) - 1]
         # Get file image
-        resp = requests.get(img)
-        file = np.asarray(bytearray(resp.content), dtype="uint8")
-        file = cv2.imdecode(file, cv2.IMREAD_COLOR)
+        file = cv2.VideoCapture(img)
+        file = file.read()[1]
         # BGR to GRAY
         file = cv2.cvtColor(file, cv2.COLOR_BGR2GRAY)
         # Get Equelize file
