@@ -13,6 +13,7 @@ def main():
     from bs4 import BeautifulSoup
     from matplotlib import pyplot as plt
     from nltk.probability import FreqDist
+    from skimage import io
     from train import classifier
 
     # Create result directory if exists
@@ -88,9 +89,7 @@ def main():
         filename = img.split('/')
         filename = filename[len(filename) - 1]
         # Get file image
-        resp = requests.get(img)
-        file = np.asarray(bytearray(resp.content), dtype="uint8")
-        file = cv2.imdecode(file, cv2.IMREAD_COLOR)
+        file = io.imread(img)
         # BGR to GRAY
         file = cv2.cvtColor(file, cv2.COLOR_BGR2GRAY)
         # Get Equelize file
